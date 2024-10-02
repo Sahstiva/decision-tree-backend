@@ -22,7 +22,7 @@ describe('DecisionTreeService', () => {
     await decisionTreeService.executeTree(tree);
 
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith();
+    expect(spy).toHaveBeenCalledWith({ logs: [] });
   });
 
   it('should execute SendEmailAction', async () => {

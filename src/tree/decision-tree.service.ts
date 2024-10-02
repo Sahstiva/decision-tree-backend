@@ -4,12 +4,17 @@ import { SendSmsAction } from './actions/send-sms.action';
 import { SendEmailAction } from './actions/send-email.action';
 import { ConditionAction } from './actions/condition.action';
 import { LoopAction } from './actions/loop.action';
+import { ExecutionState } from './state';
+import { State } from './interfaces/state.interface';
 
 @Injectable()
 export class DecisionTreeService {
-  async executeTree(tree: any): Promise<void> {
+  async executeTree(tree: any): Promise<State> {
+    const state = new ExecutionState();
     const action = this.parseAction(tree);
-    await action.execute();
+    await action.execute(state);
+
+    return state;
   }
 
   private parseAction(json: any): Action {

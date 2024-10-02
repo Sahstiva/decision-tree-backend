@@ -1,4 +1,5 @@
 import { Action } from '../interfaces/action.interface';
+import { State } from '../interfaces/state.interface';
 
 export class ConditionAction implements Action {
   private readonly condition: string;
@@ -11,14 +12,15 @@ export class ConditionAction implements Action {
     this.falseAction = falseAction;
   }
 
-  async execute(): Promise<void> {
+  async execute(state: State): Promise<void> {
     const result = eval(this.condition); // Evaluate the JavaScript condition
-    console.log(`Condition '${this.condition}' evaluated to ${result}`);
+    state.addLog(`Condition '${this.condition}' evaluated to ${result}`);
+    // console.log(`Condition '${this.condition}' evaluated to ${result}`);
 
     if (result) {
-      await this.trueAction.execute();
+      await this.trueAction.execute(state);
     } else if (this.falseAction) {
-      await this.falseAction.execute();
+      await this.falseAction.execute(state);
     }
   }
 }

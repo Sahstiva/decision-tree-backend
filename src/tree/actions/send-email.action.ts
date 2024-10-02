@@ -1,4 +1,5 @@
 import { Action } from '../interfaces/action.interface';
+import { State } from '../interfaces/state.interface';
 
 export class SendEmailAction implements Action {
   private readonly sender: string;
@@ -9,8 +10,9 @@ export class SendEmailAction implements Action {
     this.receiver = receiver;
   }
 
-  async execute(): Promise<void> {
-    console.log(`Sending email from ${this.sender} to ${this.receiver}`);
+  async execute(state: State): Promise<void> {
+    state.addLog(`Sent email from ${this.sender} to ${this.receiver}`);
+    // console.log(`Sending email from ${this.sender} to ${this.receiver}`);
     // Log the Email sending action (instead of actual implementation).
   }
 }

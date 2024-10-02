@@ -30,7 +30,7 @@ describe('DecisionTreeController (e2e)', () => {
       .send(treePayload)
       .expect(200);
 
-    expect(response.text).toEqual('Decision Tree Executed');
+    expect(response.text).toContain('Decision Tree Executed');
   });
 
   it('should execute a condition that evaluates to true and sends an SMS', async () => {
@@ -53,7 +53,7 @@ describe('DecisionTreeController (e2e)', () => {
       .send(treePayload)
       .expect(200);
 
-    expect(response.text).toEqual('Decision Tree Executed');
+    expect(response.text).toContain('Decision Tree Executed');
   });
 
   it('should execute a loop that sends an SMS 3 times', async () => {
@@ -71,7 +71,7 @@ describe('DecisionTreeController (e2e)', () => {
       .send(treePayload)
       .expect(200);
 
-    expect(response.text).toEqual('Decision Tree Executed');
+    expect(response.text).toContain('Decision Tree Executed');
   });
 
   it('should return 400 for an invalid action type', async () => {

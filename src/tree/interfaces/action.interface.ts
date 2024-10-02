@@ -1,3 +1,5 @@
+import { State } from './state.interface';
+
 export interface Action {
-  execute(): Promise<void>;
+  execute(state: State): Promise<void>;
 }
