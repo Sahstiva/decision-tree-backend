@@ -177,6 +177,3 @@ This project is licensed under the MIT License.
 If you have any questions or need support, feel free to reach out!
 
 ---
-
-This `README.md` gives a comprehensive overview of the project and how to use it, including setup instructions, API details, structure explanation, and test coverage.
-
